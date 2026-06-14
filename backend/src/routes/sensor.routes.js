@@ -3,12 +3,14 @@ import { Router } from "express";
 import {
   addSensorData,
   getLatestSensorData,
-} from "../controllers/sensor.controller.js";
+  getSensorHistory
+} from "../controllers/sensor.controllers.js";
 
 const router = Router();
 
-router.post("/", addSensorData);
+router.route("/add").post(addSensorData);
 
-router.get("/latest", getLatestSensorData);
+router.route("/latest").get(getLatestSensorData)
+router.route("/history").get(getSensorHistory)
 
 export default router;

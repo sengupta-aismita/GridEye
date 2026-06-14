@@ -1,14 +1,28 @@
 import mongoose from "mongoose";
 
-const sensorSchema = new mongoose.Schema({
-  voltage: {
-    type: Number,
-    required: true,
-  },
-  timestamp: {
-    type: Date,
-    default: Date.now,
-  },
-});
+const sensorSchema = new mongoose.Schema(
+  {
+    voltage: {
+      type: Number,
+      required: true,
+    },
 
-export const Sensor = mongoose.model("Sensor", sensorSchema);
+    current: {
+      type: Number,
+      default: 0,
+    },
+
+    power: {
+      type: Number,
+      default: 0,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+export const Sensor = mongoose.model(
+  "Sensor",
+  sensorSchema
+);
